@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookshelf
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bookshelf
+  template:
+    metadata:
+      labels:
+        app: bookshelf
+    spec:
+      securityContext:
+        fsGroup: 33 # www-data group ID
+        runAsUser: 33 # www-data user ID
+        runAsGroup: 33 # www-data group ID
+
+      containers:
+        - name: bookshelf
+          image: ghcr.io/advplyr/audiobookshelf:latest
+          ports:
+            - containerPort: 3005
+
+          securityContext:
+            allowPrivilegeEscalation: false
+
+          volumeMounts:
+            - name: bookshelf-data
+              mountPath: /etc/bookshelf/data
+              subPath: audiobooks
+            - name: bookshelf-data
+              mountPath: /etc/bookshelf/data
+              subPath: podcasts
+            - name: bookshelf-data
+              mountPath: /etc/bookshelf/data
+              subPath: config
+            - name: bookshelf-data
+              mountPath: /etc/bookshelf/data
+              subPath: metadata
+      volumes:
+        - name: bookshelf-data
+          persistentVolumeClaim:
+            claimName: bookshelf-data-pvc
