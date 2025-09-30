@@ -1,51 +1,47 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: audiobookshelf-config-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce # Or ReadWriteMany if your storage supports it
+  resources:
+    requests:
+      storage: 1Gi # Adjust size as needed
+  storageClassName: my-audiobookshelf-storage # Or omit to use default
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: audiobooks-pvc
+  name: audiobookshelf-metadata-pvc
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
-  storageClassName: standard
-
+  storageClassName: my-audiobookshelf-storage
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: podcasts-pvc
+  name: audiobookshelf-audiobooks-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany # Recommended for media if multiple pods might access it
   resources:
     requests:
-      storage: 1Gi
-  storageClassName: standard
-
+      storage: 1Gi # Adjust based on your collection size
+  storageClassName: my-audiobookshelf-storage
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: config-pvc
+  name: audiobookshelf-podcasts-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 1Gi
-  storageClassName: standard
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: metadata-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-  storageClassName: standard
+  storageClassName: my-audiobookshelf-storage

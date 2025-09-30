@@ -27,25 +27,24 @@ spec:
             allowPrivilegeEscalation: false
 
           volumeMounts:
-            - name: audiobooks
-              mountPath: /etc/bookshelf/audiobooks
-            - name: podcasts
-              mountPath: /etc/bookshelf/podcasts
-            - name: config
-              mountPath: /etc/bookshelf/config
-            - name: metadata
-              mountPath: /etc/bookshelf/metadata
-
+            - name: config-volume
+              mountPath: /config
+            - name: metadata-volume
+              mountPath: /metadata
+            - name: audiobooks-volume
+              mountPath: /audiobooks
+            - name: podcasts-volume
+              mountPath: /podcasts            
       volumes:
-        - name: audiobooks
+        - name: config-volume
           persistentVolumeClaim:
-            claimName: audiobooks-pvc
-        - name: podcasts
+            claimName: audiobookshelf-config-pvc
+        - name: metadata-volume
           persistentVolumeClaim:
-            claimName: podcasts-pvc
-        - name: config
+            claimName: audiobookshelf-metadata-pvc
+        - name: audiobooks-volume
           persistentVolumeClaim:
-            claimName: config-pvc
-        - name: metadata
+            claimName: audiobookshelf-audiobooks-pvc
+        - name: podcasts-volume
           persistentVolumeClaim:
-            claimName: metadata-pvc
+            claimName: audiobookshelf-podcasts-pvc
