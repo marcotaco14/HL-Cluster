@@ -26,22 +26,7 @@ spec:
           volumeMounts:
             - name: config-volume
               mountPath: /config
-            - name: metadata-volume
-              mountPath: /metadata
-            - name: audiobooks-volume
-              mountPath: /audiobooks
-            - name: podcasts-volume
-              mountPath: /podcasts-volume
       volumes:
         - name: config-volume
           persistentVolumeClaim:
             claimName: audiobookshelf-config-pvc
-        - name: metadata-volume
-          persistentVolumeClaim:
-            claimName: audiobookshelf-metadata-pvc
-        - name: audiobooks-volume
-          persistentVolumeClaim:
-            claimName: audiobookshelf-audiobooks-pvc
-        - name: podcasts-volume
-          persistentVolumeClaim:
-            claimName: audiobookshelf-podcasts-pvc
