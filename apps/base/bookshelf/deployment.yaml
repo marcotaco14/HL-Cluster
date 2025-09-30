@@ -45,7 +45,7 @@ spec:
             claimName: podcasts-pvc
         - name: config
           persistentVolumeClaim:
-            claimName: configs-pvc
+            claimName: config-pvc
         - name: metadata
           persistentVolumeClaim:
             claimName: metadata-pvc
