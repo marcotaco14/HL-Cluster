@@ -4,7 +4,10 @@ metadata:
   name: bookshelf
 spec:
   ports:
-    - port: 3005
+    - protocol: tcp
+      port: 80 
+    - targetport: 3005
   selector:
     app: bookshelf
+    tier: backend
   type: ClusterIP
