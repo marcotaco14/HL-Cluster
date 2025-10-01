@@ -4,7 +4,7 @@ metadata:
   name: bookshelf
 spec:
   ports:
-      port: 80 
+    - port: 3005
   selector:
     app: bookshelf
   type: ClusterIP
