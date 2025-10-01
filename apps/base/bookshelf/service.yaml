@@ -4,8 +4,7 @@ metadata:
   name: bookshelf
 spec:
   ports:
-    - protocol: tcp
-      port: 81 
+      port: 80 
     - targetport: 3005
   selector:
     app: bookshelf
