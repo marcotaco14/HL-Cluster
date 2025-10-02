@@ -1,15 +1,12 @@
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
   name: bookshelf
-  labels:
-    app: bookshelf
+  namespace: bookshelf
 spec:
   selector:
     app: bookshelf
   ports:
-    - name: http
-      protocol: TCP
-      port: 80        # Service port (used by clients inside the cluster)
-      targetPort: 3005  # Container port defined in Deployment
-  type: ClusterIP
+  - protocol: TCP
+    port: 3005
+    name: http

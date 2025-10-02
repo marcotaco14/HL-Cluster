@@ -1,21 +1,17 @@
 apiVersion: networking.k8s.io/v1
-kind: Ingress
+kind: bookshelf
 metadata:
-  name: audiobookshelf-ingress
-  labels:
-    app: bookshelf
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: bookshelf
 spec:
   ingressClassName: traefik
   rules:
-    - host: bookshelf.local
+    - host: localhost
       http:
         paths:
-          - path: /
-            pathType: Prefix
-            backend:
+          - backend:
               service:
                 name: bookshelf
                 port:
                   number: 3005
+            path: /
+            pathType: Prefix
