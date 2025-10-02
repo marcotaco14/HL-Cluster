@@ -1,11 +1,11 @@
 apiVersion: networking.k8s.io/v1
-kind: bookshelf
+kind: Ingress
 metadata:
   name: bookshelf
 spec:
   ingressClassName: traefik
   rules:
-    - host: localhost
+    - host: localhost\bookshelf
       http:
         paths:
           - backend:
