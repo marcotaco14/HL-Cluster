@@ -1,12 +1,11 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
-  name: bookshelf
-  namespace: bookshelf
+  name: bookshelf-service
 spec:
   selector:
-    app: bookshelf
+    app.kubernetes.io/name: bookshelf
   ports:
-  - protocol: TCP
-    port: 3005
-    name: http
+    - protocol: TCP
+      port: 80
+      targetPort: 3005
