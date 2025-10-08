@@ -12,19 +12,11 @@ spec:
       labels:
         app: bookshelf2
     spec:
-      securityContext:
-        fsGroup: 33 # www-data group ID
-        runAsUser: 33 # www-data user ID
-        runAsGroup: 33 # www-data group ID
-
       containers:
         - name: bookshelf2
           image: ghcr.io/advplyr/audiobookshelf:latest
           ports:
             - containerPort: 3005
-
-          securityContext:
-            allowPrivilegeEscalation: false
 
       volumeMounts:
             - name: audiobooks-pvc
