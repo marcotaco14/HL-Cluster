@@ -23,3 +23,29 @@ spec:
           ports:
             - containerPort: 3005
 
+          securityContext:
+            allowPrivilegeEscalation: false
+
+      volumeMounts:
+            - name: audiobooks-pvc
+              mountPath: /audiobooks
+            - name: podcasts-pvc
+              mountPath: /podcasts
+            - name: config-pvc
+              mountPath: /config
+            - name: metadata-pvc
+              mountPath: /metadata
+      volumes:
+        - name: audiobooks-pvc
+          persistentVolumeClaim:
+            claimName: audiobooks-pvc
+        - name: podcasts-pvc
+          persistentVolumeClaim:
+            claimName: podcasts-pvc
+        - name: config-pvc
+          persistentVolumeClaim:
+            claimName: config-pvc
+        - name: metadata-pvc
+          persistentVolumeClaim:
+            claimName: metadata-pvc
+
