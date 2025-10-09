@@ -16,7 +16,7 @@ spec:
         - name: bookshelf2
           image: ghcr.io/advplyr/audiobookshelf:latest
           ports:
-            - containerPort: 3005
+            - containerPort: 80
 
       volumeMounts:
             - name: audiobooks-pvc

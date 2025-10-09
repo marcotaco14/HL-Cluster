@@ -11,4 +11,3 @@ spec:
     - name: http
       port: 3005      # The service port for internal cluster access
       targetPort: 80  # The port on the pod/container
-  type: ClusterIP
