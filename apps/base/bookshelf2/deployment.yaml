@@ -20,13 +20,13 @@ spec:
 
       volumeMounts:
             - name: audiobooks-pvc
-              mountPath: /audiobooks
+              mountPath: /etc/audiobooks
             - name: podcasts-pvc
-              mountPath: /podcasts
+              mountPath: /etc/podcasts
             - name: config-pvc
-              mountPath: /config
+              mountPath: /etc/config
             - name: metadata-pvc
-              mountPath: /metadata
+              mountPath: /etc/metadata
       volumes:
         - name: audiobooks-pvc
           persistentVolumeClaim:
