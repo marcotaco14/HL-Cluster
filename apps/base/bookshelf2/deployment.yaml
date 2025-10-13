@@ -19,25 +19,20 @@ spec:
             - containerPort: 80
 
           volumeMounts:
-            - name: audiobooks-pvc
-              mountPath: /etc/audiobooks
-            - name: podcasts-pvc
-              mountPath: /etc/podcasts
-            - name: config-pvc
-              mountPath: /etc/config
-            - name: metadata-pvc
-              mountPath: /etc/metadata
+            - name: data
+              mountPath: /audiobooks
+              subPath: audiobooks
+            - name: data
+              mountPath: /podcasts
+              subPath: podcasts
+            - name: data
+              mountPath: /config
+              subPath: config
+            - name: data
+              mountPath: /metadata
+              subPath: metadata
       volumes:
-        - name: audiobooks-pvc
+        - name: data
           persistentVolumeClaim:
-            claimName: audiobooks-pvc
-        - name: podcasts-pvc
-          persistentVolumeClaim:
-            claimName: podcasts-pvc
-        - name: config-pvc
-          persistentVolumeClaim:
-            claimName: config-pvc
-        - name: metadata-pvc
-          persistentVolumeClaim:
-            claimName: metadata-pvc
+            claimName: bookshelf-data
 
