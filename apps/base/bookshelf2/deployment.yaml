@@ -18,7 +18,7 @@ spec:
           ports:
             - containerPort: 80
 
-      volumeMounts:
+          volumeMounts:
             - name: audiobooks-pvc
               mountPath: /etc/audiobooks
             - name: podcasts-pvc
