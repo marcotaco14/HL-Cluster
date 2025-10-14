@@ -11,16 +11,20 @@ spec:
     metadata:
       labels:
         app: bookshelf2
-  securityContext:
-    runAsUser: 65534
-    fsGroup: 65534
-    runAsNonRoot: true
+    spec:
+      securityContext:
+        fsGroup: 65534
+        runAsUser: 65534
+        runAsGroup: 65534
 
       containers:
         - name: bookshelf2
           image: ghcr.io/advplyr/audiobookshelf:latest
           ports:
             - containerPort: 80
+
+          securityContext:
+            allowPrivilegeEscalation: false
 
           volumeMounts:
             - name: data
