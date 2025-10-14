@@ -12,10 +12,6 @@ spec:
       labels:
         app: bookshelf2
     spec:
-      securityContext:
-        fsGroup: 1
-        runAsUser: 1
-        runAsGroup: 1
 
       containers:
         - name: bookshelf2
@@ -23,8 +19,6 @@ spec:
           ports:
             - containerPort: 80
 
-          securityContext:
-            allowPrivilegeEscalation: false
 
           volumeMounts:
             - name: data
