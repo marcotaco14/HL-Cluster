@@ -12,20 +12,12 @@ spec:
       labels:
         app: bookshelf2
     spec:
-      #      securityContext:
-      #        runAsUser: 1000
-      #        runAsGroup: 1000
-      #        fsGroup: 0
 
       containers:
         - name: bookshelf2
           image: ghcr.io/advplyr/audiobookshelf:latest
           ports:
             - containerPort: 80
-
-          securityContext:
-            allowPrivilegeEscalation: false
-            runAsUser: 1000
 
           volumeMounts:
             - name: data
