@@ -11,7 +11,10 @@ spec:
     metadata:
       labels:
         app: bookshelf2
-    spec:
+  securityContext:
+    runAsUser: 65534
+    fsGroup: 65534
+    runAsNonRoot: true
 
       containers:
         - name: bookshelf2
