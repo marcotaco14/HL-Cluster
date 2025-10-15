@@ -12,12 +12,22 @@ spec:
       labels:
         app: bookshelf2
     spec:
+      securityContext:
+        runAsUser: 1000        # UID of 'node'
+        runAsGroup: 1000       # GID of 'node'
+        fsGroup: 1000
 
       containers:
         - name: bookshelf2
           image: ghcr.io/advplyr/audiobookshelf:latest
           ports:
             - containerPort: 80
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
 
 
           volumeMounts:
