@@ -3,6 +3,6 @@ kind: Kustomization
 namespace: bookshelf2
 resources:
   - ../../base/bookshelf2
-    - secret.yaml
+    #    - secret.yaml
     # - test-secret.yaml
     # - ingress.yaml
