@@ -25,7 +25,7 @@ spec:
 
           envFrom:
             - configMapRef:
-                name: audiobookshelf-configmap
+                name: bookshelf2-configmap
 
           ports:
             - containerPort: 3005
