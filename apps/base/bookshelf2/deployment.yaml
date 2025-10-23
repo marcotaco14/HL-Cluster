@@ -7,37 +7,47 @@ spec:
   selector:
     matchLabels:
       app: bookshelf2
+
   template:
     metadata:
       labels:
         app: bookshelf2
+
     spec:
       securityContext:
-        runAsUser: 1000        
-        runAsGroup: 1000      
         fsGroup: 1000
+        runAsUser: 1000
+        runAsGroup: 1000
 
       containers:
         - name: bookshelf2
-          image: ghcr.io/advplyr/audiobookshelf:latest
+          image: ghcr.io/advplyr/audiobookshelf:2.17.2
+
+          envFrom:
+            - configMapRef:
+                name: audiobookshelf-configmap
+
           ports:
-            - containerPort: 80
+            - containerPort: 3005
+              protocol: TCP
 
           volumeMounts:
-            - name: data
-              mountPath: /audiobooks
-              subPath: audiobooks
-            - name: data
-              mountPath: /podcasts
-              subPath: podcasts
-            - name: data
-              mountPath: /config
-              subPath: config
-            - name: data
-              mountPath: /metadata
-              subPath: metadata
-      volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: bookshelf-data
+            - mountPath: /config
+              name: audiobookshelf-config
+            - mountPath: /metadata
+              name: audiobookshelf-metadata
+            - mountPath: /audiobooks
+              name: audiobookshelf-audiobooks
 
+      restartPolicy: Always
+
+      volumes:
+        - name: audiobookshelf-config
+          persistentVolumeClaim:
+            claimName: audiobookshelf-config
+        - name: audiobookshelf-metadata
+          persistentVolumeClaim:
+            claimName: audiobookshelf-metadata
+        - name: audiobookshelf-audiobooks
+          persistentVolumeClaim:
+            claimName: audiobookshelf-audiobooks
