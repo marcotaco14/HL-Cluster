@@ -67,7 +67,7 @@ data:
   config.yaml: |
     # Name of the tunnel you want to run
    
-    tunnel: audiobooks
+    tunnel: bkshlf2
 
     credentials-file: /etc/cloudflared/creds/credentials.json
 
