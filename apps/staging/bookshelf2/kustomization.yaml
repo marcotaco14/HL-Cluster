@@ -4,5 +4,5 @@ namespace: bookshelf2
 resources:
   - ../../base/bookshelf2
     #    - secret.yaml
-    # - test-secret.yaml
+  - cloudflare.yaml
     # - ingress.yaml
