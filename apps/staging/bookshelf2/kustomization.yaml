@@ -2,7 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: bookshelf2
 resources:
-  - ../../base/bookshelf2
-    #    - secret.yaml
+  - ../../base/bookshelf2/
+  - cloudflare-secret.yaml
   - cloudflare.yaml
-    # - ingress.yaml
