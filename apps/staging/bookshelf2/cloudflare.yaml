@@ -67,7 +67,7 @@ data:
   config.yaml: |
     # Name of the tunnel you want to run
     
-    tunnel: books
+    tunnel: bookshelf
 
     credentials-file: /etc/cloudflared/creds/credentials.json
 
